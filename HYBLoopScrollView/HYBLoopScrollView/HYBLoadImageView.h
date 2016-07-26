@@ -86,6 +86,7 @@ typedef void (^HYBImageBlock)(UIImage *image);
                    completion:(void (^)(UIImage *image))completion;
 
 - (void)cancelRequest;
+- (void)configureLayout;
 
 /**
  *	@author 黄仪标
