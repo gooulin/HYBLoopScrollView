@@ -65,6 +65,7 @@ NSString * const kCellIdentifier = @"ReuseCellIdentifier";
 // Record the previous page index, for we need to update to another page when
 // it is clicked at some point.
 @property (nonatomic, assign) NSInteger previousPageIndex;
+@property (nonatomic, assign) NSIndexPath *customIndexPath;
 @property (nonatomic, assign) NSTimeInterval timeInterval;
 
 @end
@@ -270,7 +271,13 @@ NSString * const kCellIdentifier = @"ReuseCellIdentifier";
                                       animated:YES];
   
 }
-
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.collectionView scrollToItemAtIndexPath:indexPath
+                                atScrollPosition:UICollectionViewScrollPositionNone
+                                        animated:YES];
+    self.customIndexPath = indexPath;
+}
 - (void)setImageUrls:(NSArray *)imageUrls {
   if (![imageUrls isKindOfClass:[NSArray class]]) {
     return;
@@ -317,6 +324,8 @@ NSString * const kCellIdentifier = @"ReuseCellIdentifier";
   self.collectionView.frame = self.bounds;
   NSIndexPath *indexPath = [NSIndexPath indexPathForItem:self.totalPageCount * 0.5
                                                inSection:0];
+  if (self.customIndexPath)
+      indexPath = self.customIndexPath;
   [self.collectionView scrollToItemAtIndexPath:indexPath
                               atScrollPosition:UICollectionViewScrollPositionNone
                                       animated:NO];

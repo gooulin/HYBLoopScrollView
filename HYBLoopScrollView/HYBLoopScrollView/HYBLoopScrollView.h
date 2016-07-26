@@ -158,5 +158,6 @@ typedef NS_ENUM(NSUInteger, HYBFlowLayoutType) {
  *	@return 大小/bytes
  */
 - (unsigned long long)imagesCacheSize;
+- (void)scrollToItemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
