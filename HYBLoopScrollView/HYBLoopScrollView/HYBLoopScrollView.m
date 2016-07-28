@@ -34,7 +34,7 @@ NSString * const kCellIdentifier = @"ReuseCellIdentifier";
     self.titleLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     self.titleLabel.hidden = YES;
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.font = [UIFont systemFontOfSize:13];
+    self.titleLabel.font = [UIFont systemFontOfSize:14];
     [self addSubview:self.titleLabel];
     self.titleLabel.layer.masksToBounds = YES;
   }
@@ -46,7 +46,7 @@ NSString * const kCellIdentifier = @"ReuseCellIdentifier";
   [super layoutSubviews];
   
   self.imageView.frame = self.bounds;
-  self.titleLabel.frame = CGRectMake(0, self.hyb_height - 30, self.hyb_width, 30);
+  self.titleLabel.frame = CGRectMake(0, self.hyb_height - 60, self.hyb_width, 60);
   self.titleLabel.hidden = self.titleLabel.text.length > 0 ? NO : YES;
 }
 
@@ -378,6 +378,7 @@ NSString * const kCellIdentifier = @"ReuseCellIdentifier";
   
   if (self.alignment == kPageControlAlignRight && itemIndex < self.adTitles.count) {
     cell.titleLabel.text = [NSString stringWithFormat:@"   %@", self.adTitles[itemIndex]];
+      cell.titleLabel.numberOfLines = 2;
   }
   
   return cell;
